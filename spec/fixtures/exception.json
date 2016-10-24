@@ -1,0 +1,78 @@
+{
+  "account": {
+    "id": "123",
+    "name": "Test Account",
+    "url": "https://app.bugsnag.com/account/test-account"
+  },
+  "project": {
+    "id": "456",
+    "name": "project",
+    "url": "https://app.bugsnag.com/test-account/project"
+  },
+  "trigger": {
+    "type": "exception",
+    "message": "Event"
+  },
+  "error": {
+    "id": "789",
+    "errorId": "1234",
+    "exceptionClass": "ActionController::ParameterMissing",
+    "message": "param is missing or the value is empty: subscribe",
+    "context": "subscriptions#create",
+    "releaseStage": "production",
+    "occurrences": 12,
+    "firstReceived": "2016-10-14T07:30:43.000Z",
+    "receivedAt": "2016-10-24T03:23:56.087Z",
+    "requestUrl": "https://example.com/subscriptions",
+    "userId": "1.2.3.4",
+    "url": "https://app.bugsnag.com/test-account/project/errors/1234?event_id=789",
+    "severity": "error",
+    "metaData": {
+      "request": {
+        "referer": null,
+        "railsAction": "subscriptions#create"
+      },
+      "session": {
+      },
+      "cookies": {
+      },
+      "app": {
+        "type": null
+      }
+    },
+    "stackTrace": [
+      {
+        "file": "vendor/bundle/ruby/2.3.0/gems/actionpack-4.2.7.1/lib/action_controller/metal/strong_parameters.rb",
+        "lineNumber": "251",
+        "columnNumber": null,
+        "method": "require",
+        "inProject": false,
+        "code": {
+          "248": "      if value.present? || value == false",
+          "249": "        value",
+          "250": "      else",
+          "251": "        raise ParameterMissing.new(key)",
+          "252": "      end",
+          "253": "    end",
+          "254": ""
+        }
+      },
+      {
+        "file": "app/controllers/subscriptions_controller.rb",
+        "lineNumber": "47",
+        "columnNumber": null,
+        "method": "subscribe_params",
+        "inProject": true,
+        "code": {
+          "44": "  private",
+          "45": "",
+          "46": "  def subscribe_params",
+          "47": "    params.require(:subscribe).permit(:email, :location, :region, region: [])",
+          "48": "  end",
+          "49": "",
+          "50": "end"
+        }
+      }
+    ]
+  }
+}
